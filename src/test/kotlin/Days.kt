@@ -16,7 +16,8 @@ class Days {
         """.trimIndent()
         val testOutput1 = 11
 
-        val input1 = AOC.getInput(1) ?: throw Error("Input not found")
-        day01.solvePart1(input1)
+        val input = AOC.getInput(1) ?: throw Error("Input not found")
+        day01.solvePart1(input)
+        day01.solvePart2(input)
     }
 }
