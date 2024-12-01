@@ -62,6 +62,7 @@ class AOC {
          * @param year The year for which the input should be returned.
          */
         fun getInputFromWeb(day: Int, year: Int = 2024, downloadInput: Boolean = false): String? {
+            println("Getting input for day $day from the web...")
             val path = "https://adventofcode.com/$year/day/$day/input"
             val request = okhttp3.Request.Builder()
                 .url(path)
@@ -71,6 +72,7 @@ class AOC {
             val input = response.body?.string()
             if (downloadInput && input != null) {
                 saveInput(day, input)
+                println("Input for day $day downloaded.")
             }
             return input
         }
