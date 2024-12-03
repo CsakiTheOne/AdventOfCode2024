@@ -1,5 +1,6 @@
 import com.csakitheone.days.day01
 import com.csakitheone.days.day02
+import com.csakitheone.days.day03
 import com.csakitheone.utils.AOC
 import kotlin.test.Test
 import kotlin.test.assertTrue
@@ -37,5 +38,15 @@ class Days {
         val input = AOC.getInput(2) ?: throw Error("Input not found")
         day02.solvePart1(input)
         day02.solvePart2(input)
+    }
+
+    @Test
+    fun testDay03() {
+        val testInput1 = "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))"
+        val testOutput1 = 161
+
+        val input = AOC.getInput(3) ?: throw Error("Input not found")
+        day03.solvePart1(input)
+        day03.solvePart2(input)
     }
 }
