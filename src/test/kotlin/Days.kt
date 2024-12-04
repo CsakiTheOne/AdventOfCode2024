@@ -1,6 +1,7 @@
 import com.csakitheone.days.day01
 import com.csakitheone.days.day02
 import com.csakitheone.days.day03
+import com.csakitheone.days.day04
 import com.csakitheone.utils.AOC
 import kotlin.test.Test
 import kotlin.test.assertTrue
@@ -48,5 +49,26 @@ class Days {
         val input = AOC.getInput(3) ?: throw Error("Input not found")
         day03.solvePart1(input)
         day03.solvePart2(input)
+    }
+
+    @Test
+    fun testDay04() {
+        val testInput1 = """
+            MMMSXXMASM
+            MSAMXMSMSA
+            AMXSXMAAMM
+            MSAMASMSMX
+            XMASAMXAMM
+            XXAMMXXAMA
+            SMSMSASXSS
+            SAXAMASAAA
+            MAMMMXMMMM
+            MXMXAXMASX
+        """.trimIndent()
+        val testOutput1 = 18
+
+        val input = AOC.getInput(4) ?: throw Error("Input not found")
+        assert(day04.solvePart1(input) as Int > 2629)
+
     }
 }
