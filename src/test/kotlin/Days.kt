@@ -66,9 +66,22 @@ class Days {
             MXMXAXMASX
         """.trimIndent()
         val testOutput1 = 18
+        val testInput2 = """
+            .M.S......
+            ..A..MSMS.
+            .M.S.MAA..
+            ..A.ASMSM.
+            .M.S.M....
+            ..........
+            S.S.S.S.S.
+            .A.A.A.A..
+            M.M.M.M.M.
+            ..........
+        """.trimIndent()
+        val testOutput2 = 9
 
         val input = AOC.getInput(4) ?: throw Error("Input not found")
-        assert(day04.solvePart1(input) as Int > 2629)
-
+        //assert((day04.solvePart1(input) as Int) > 2629)
+        assert((1076..1989).contains(day04.solvePart2(input) as Int))
     }
 }

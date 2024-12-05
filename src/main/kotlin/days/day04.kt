@@ -44,14 +44,43 @@ val day04 = Puzzle(
     day = 4,
     part1 = { input ->
         val xIndices = input.withIndex().filter { it.value == 'X' }.map { it.index }
+        val lineLength = input.lines()[0].length + 1
 
         println("Found Xs: ${xIndices.size}")
 
         xIndices.sumOf { index ->
-            val lineLength = input.lines()[0].length + 1
             val x = index % lineLength
             val y = index / lineLength
             checkXmasNearby(input, x, y)
         }
     },
+    part2 = { input ->
+        val aIndices = input.withIndex().filter { it.value == 'A' }.map { it.index }
+        val lines = input.lines().filter { it.isNotBlank() }
+        val lineLength = lines[0].length + 1
+
+        aIndices.sumOf { index ->
+            val x = index % lineLength
+            val y = index / lineLength
+
+            val isWithinBounds = x in 1..<(lineLength - 2) && y in 1..<(lines.lastIndex)
+            if (!isWithinBounds) return@sumOf 0
+
+            val nearbyValidCharacters = listOf(
+                lines[y - 1][x - 1],
+                lines[y - 1][x + 1],
+                lines[y + 1][x - 1],
+                lines[y + 1][x + 1],
+            )
+
+            val hasTwoMs = nearbyValidCharacters.count { it == 'M' } == 2
+            val hasTwoSs = nearbyValidCharacters.count { it == 'S' } == 2
+            val isNotDiagonal = lines[y - 1][x - 1] != lines[y + 1][x + 1]
+            if (hasTwoMs && hasTwoSs && isNotDiagonal) {
+                return@sumOf 1
+            }
+
+            return@sumOf 0 as Int
+        }
+    }
 )
