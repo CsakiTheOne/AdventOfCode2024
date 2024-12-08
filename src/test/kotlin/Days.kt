@@ -116,10 +116,8 @@ class Days {
         val testOutput1 = 143
         val testOutput2 = 123
 
-        day05.testPart2(testInput1, testOutput2)
-
-//        val input = AOC.getInput(5) ?: throw Error("Input not found")
-//        day05.solvePart1(input)
-//        day05.solvePart2(input)
+        val input = AOC.getInput(5) ?: throw Error("Input not found")
+        //day05.solvePart1(input)
+        day05.solvePart2(input)
     }
 }

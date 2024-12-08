@@ -1,6 +1,7 @@
 package com.csakitheone.days
 
 import com.csakitheone.utils.Puzzle
+import kotlin.system.measureTimeMillis
 
 private data class Update(
     val pages: List<Int>,
@@ -55,11 +56,28 @@ val day05 = Puzzle(
 
             println("Fixing: $update")
 
-            while (!fixedUpdate.isValid(rules)) {
-                fixedUpdate = Update(fixedUpdate.pages.mapIndexed { index, page ->
-
-                })
+            val fixTime = measureTimeMillis {
+                while (!fixedUpdate.isValid(rules)) {
+                    var i = 0
+                    while (i < fixedUpdate.pages.size) {
+                        val currentPage = fixedUpdate.pages[i]
+                        val currentRule = rules[currentPage] ?: continue
+                        val prevPages = fixedUpdate.pages.subList(0, i)
+                        if (prevPages.any { it in currentRule }) {
+                            val firstBadPageIndex = prevPages.indexOfFirst { it in currentRule }
+                            fixedUpdate = fixedUpdate.copy(
+                                pages = fixedUpdate.pages.toMutableList().apply {
+                                    set(firstBadPageIndex, currentPage)
+                                    set(i, prevPages[firstBadPageIndex])
+                                }
+                            )
+                        }
+                        else i++
+                    }
+                }
             }
+
+            println("Fixed: $fixedUpdate in $fixTime ms")
 
             fixedUpdate
         }
