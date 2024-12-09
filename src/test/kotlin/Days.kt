@@ -120,4 +120,26 @@ class Days {
         //day05.solvePart1(input)
         day05.solvePart2(input)
     }
+
+    @Test
+    fun testDay06() {
+        val testInput1 = """
+            ....#.....
+            .........#
+            ..........
+            ..#.......
+            .......#..
+            ..........
+            .#..^.....
+            ........#.
+            #.........
+            ......#...
+        """.trimIndent()
+        val testOutput1 = 41
+        val testOutput2 = 6
+
+        val input = AOC.getInput(6) ?: throw Error("Input not found")
+        assert((day06.solvePart1(input) as Int) == 4890)
+        day06.solvePart2(input)
+    }
 }
