@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("net.objecthunter:exp4j:0.4.8")
     testImplementation(kotlin("test"))
 }
 

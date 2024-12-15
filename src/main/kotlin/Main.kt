@@ -1,5 +1,7 @@
 package com.csakitheone
 
 fun main() {
-    println("Hello, World!")
+    (0..5).forEach {
+        println(it.toString(2))
+    }
 }
