@@ -159,7 +159,11 @@ class Days {
         val testOutput1 = 3749
 
         val input = AOC.getInput(7) ?: throw Error("Input not found")
-        //assert((day07.solvePart1(input) as Long) > 180667032L)
+        assert((day07.solvePart1(input) as Long) > 180667032L)
         day07.solvePart2(input)
     }
+
+    @Test
+    fun testDay08() {
+        val testInput1 =
 }
